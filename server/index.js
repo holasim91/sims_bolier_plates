@@ -26,6 +26,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!! 크크루삥뽕");
 });
 
+app.get('/api/hello' , (req,res)=>{
+  res.send('Hello Client!')
+})
+
 app.post("/api/user/register", (req, res) => {
   //회원가입할 때 필요한 정보를 클라이언트에서 받아오면 얘네를 DB로 넣어줌
   const user = new User(req.body);
@@ -82,19 +86,6 @@ app.get('/api/user/auth',auth,(req, res)=>{
     lastname: req.user.lastname
   })
 })
-
-// app.get("/api/user/logout", auth, (req, res) => {
-//   User.findOneAndUpdate(
-//     {
-//       _id: req.user._id,
-//     },
-//     { token: "" },
-//     (err, user) => {
-//       if (err) return res.json({ success: false, err });
-//       return res.status(200).send({ success: true });
-//     }
-//   );
-// });
 
 app.get('/api/user/logout', auth, (req, res) => {
   // console.log('req.user', req.user)
