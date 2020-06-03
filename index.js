@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 app.post("/register", (req, res) => {
   //회원가입할 때 필요한 정보를 클라이언트에서 받아오면 얘네를 DB로 넣어줌
   const user = new User(req.body);
-  user.save((err, doc) => {
+  user.save((err, userInfo) => {
     if (err) return res.json({ Success: false, err });
     return res.status(200).json({
       Success: true,
